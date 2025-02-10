@@ -1,0 +1,28 @@
+fun main() {
+  println("Olá Jogador, Qual é seu nome?")
+  
+  val nome = readLine()?.trim() ?: "Anônimo"
+      println("Escolha um número e boa sorte jogador $nome.")
+      var escolha: Int? = null
+      var venceu=false
+  
+      do {
+      println("Escolha um número inteiro")
+       escolha = readLine()?.toIntOrNull()
+  
+      if (escolha == null) {
+        println("Má escolha, eu mandei você escolher um NÙMERO, jogador $nome, você esta eliminado!")
+        break 
+      } 
+      
+           when { 
+         escolha  < 10 -> println("Tenha mais ambição jogador, tente novamente!")
+         escolha  > 10 -> println("Você voou alto demais $nome, Tente de Novo!")
+         escolha == 10 -> { 
+           venceu = true                
+           println ("Parabéns Jogador $nome, Você venceu!")
+         }
+}
+      }while (!venceu) 
+      
+}
