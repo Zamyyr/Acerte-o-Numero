@@ -1,0 +1,33 @@
+fun main() {
+    // A função main é o ponto de entrada do programa.
+    println("Olá Jogador(a), Qual é seu nome?") // 'println' imprime uma mensagem na tela.
+
+    val nome = readLine()?.trim() ?: "Anônimo" // 'val' cria uma variável imutável. 'readLine' lê a entrada do usuário. Se não houver entrada, o valor será "Anônimo".
+    println("Escolha um número e boa sorte, jogador(a) $nome.") // Imprime uma mensagem com o nome do jogador.
+
+    var escolha: Int? = null // 'var' cria uma variável mutável. Aqui, 'escolha' é do tipo inteiro (Int? porque pode ser nula).
+    var venceu = false // 'venceu' é uma variável booleana que controla o estado do jogo (verdadeiro ou falso).
+
+    do {
+        // O 'do' inicia um loop que vai continuar até a condição 'while' ser satisfeita.
+        println("Escolha um número inteiro:") // Solicita ao jogador que escolha um número.
+
+        escolha = readLine()?.toIntOrNull() // Lê a entrada do usuário e tenta converter para inteiro. Se não for possível, 'escolha' será nula.
+
+        if (escolha == null) {
+            // Se a escolha for nula (o jogador não digitou um número válido), o programa informa um erro.
+            println("Má escolha, eu mandei você escolher um NÚMERO, jogador(a) $nome. Você está eliminado!")
+            break // O 'break' interrompe o loop e encerra o jogo.
+        }
+
+        when {
+            escolha < 10 -> println("Tenha mais ambição, jogador(a)! Tente novamente.") // Se o número for menor que 10, o jogo pede para o jogador tentar novamente.
+            escolha > 10 -> println("Você voou alto demais, $nome! Tente de novo.") // Se o número for maior que 10, o jogo pede para tentar novamente.
+            escolha == 10 -> { 
+                venceu = true // Quando o jogador escolhe o número correto (10), a variável 'venceu' é alterada para 'true'.
+                println("Parabéns, jogador(a) $nome! Você venceu!") // O jogo parabeniza o jogador pela vitória.
+            }
+        }
+    } while (!venceu) // O loop continua enquanto 'venceu' for falso. Quando o jogador acerta, o loop é interrompido.
+
+}
